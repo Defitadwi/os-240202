@@ -1,45 +1,58 @@
 # 📝 Laporan Tugas Akhir
 
 **Mata Kuliah**: Sistem Operasi
+
 **Semester**: Genap / Tahun Ajaran 2024–2025
-**Nama**: `<Nama Lengkap>`
-**NIM**: `<Nomor Induk Mahasiswa>`
+
+**Nama**: Defita Dwi Wulandary
+
+**NIM**: 240202856
+
 **Modul yang Dikerjakan**:
-`(Contoh: Modul 1 – System Call dan Instrumentasi Kernel)`
+ Modul 3 – Manajemen Memori Tingkat Lanjut (Copy-on-Write dan Shared Memory)
 
 ---
 
 ## 📌 Deskripsi Singkat Tugas
 
-Tuliskan deskripsi singkat dari modul yang Anda kerjakan. Misalnya:
+Melakukan modifikasi kernel xv6 untuk mengimplementasikan:
 
-* **Modul 1 – System Call dan Instrumentasi Kernel**:
-  Menambahkan dua system call baru, yaitu `getpinfo()` untuk melihat proses yang aktif dan `getReadCount()` untuk menghitung jumlah pemanggilan `read()` sejak boot.
----
+* Copy-on-Write Fork (CoW): Optimalisasi fork agar tidak langsung menyalin seluruh memori, melainkan hanya menyalin saat halaman diubah (write).
+
+* Shared Memory: Menambahkan syscall shmget() dan shmrelease() agar dua proses dapat berbagi satu halaman memori, mirip dengan System V Shared Memory.
 
 ## 🛠️ Rincian Implementasi
+* Menambahkan array ref_count[] dan fungsi incref() / decref() di vm.c
 
-Tuliskan secara ringkas namun jelas apa yang Anda lakukan:
+* Menambahkan flag PTE_COW di mmu.h untuk menandai halaman CoW
 
-### Contoh untuk Modul 1:
+* Membuat fungsi cowuvm() di vm.c sebagai pengganti copyuvm()
 
-* Menambahkan dua system call baru di file `sysproc.c` dan `syscall.c`
-* Mengedit `user.h`, `usys.S`, dan `syscall.h` untuk mendaftarkan syscall
-* Menambahkan struktur `struct pinfo` di `proc.h`
-* Menambahkan counter `readcount` di kernel
-* Membuat dua program uji: `ptest.c` dan `rtest.c`
+* Mengubah fork() di proc.c agar menggunakan cowuvm()
+
+* Menangani page fault dengan memeriksa PTE_COW di trap.c
+
+* Mengubah semua kalloc()/ kfree() agar menggunakan reference counting yang sesuai
+
+Shared Memory ala System V
+* Menambahkan struktur global shmtab[] di vm.c untuk menyimpan shared memory (maks. 16 entri)
+
+* Membuat syscall sys_shmget() dan sys_shmrelease() di sysproc.c
+
+* Menambahkan syscall number baru di syscall.h
+
+* Menambahkan deklarasi syscall di user.h dan usys.S
+
 ---
 
 ## ✅ Uji Fungsionalitas
 
-Tuliskan program uji apa saja yang Anda gunakan, misalnya:
+cowtest Menguji fork() dengan teknik Copy-on-Write
 
-* `ptest`: untuk menguji `getpinfo()`
-* `rtest`: untuk menguji `getReadCount()`
-* `cowtest`: untuk menguji fork dengan Copy-on-Write
-* `shmtest`: untuk menguji `shmget()` dan `shmrelease()`
-* `chmodtest`: untuk memastikan file `read-only` tidak bisa ditulis
-* `audit`: untuk melihat isi log system call (jika dijalankan oleh PID 1)
+shmtest Menguji shmget() dan shmrelease() antar proses
+
+
+
 
 ---
 
@@ -59,12 +72,6 @@ Parent sees: X
 ```
 Child reads: A
 Parent reads: B
-```
-
-### 📍 Contoh Output `chmodtest`:
-
-```
-Write blocked as expected
 ```
 
 Jika ada screenshot:
