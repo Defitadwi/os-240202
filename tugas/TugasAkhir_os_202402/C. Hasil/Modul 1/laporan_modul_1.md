@@ -1,12 +1,14 @@
 # 📝 Laporan Tugas Akhir
 
-**Mata Kuliah**: Sistem Operasi
-**Semester**: Genap / Tahun Ajaran 2024–2025
-**Nama**: `Defita Dwi Wulandary`
-**NIM**: `240202856`
-**Modul yang Dikerjakan**:
-`Modul 1 – System Call dan Instrumentasi Kernel`
+**Mata Kuliah:** Sistem Operasi
 
+**Semester:** Genap / Tahun Ajaran 2024–2025
+
+**Nama:** Defita Dwi Wulandary
+
+**NIM:** 240202856
+
+Modul yang Dikerjakan: Modul 1 – System Call dan Instrumentasi Kernel
 ---
 
 ## 📌 Deskripsi Singkat Tugas
@@ -36,10 +38,6 @@ Tuliskan program uji apa saja yang Anda gunakan, misalnya:
 
 * `ptest`: untuk menguji `getpinfo()`
 * `rtest`: untuk menguji `getReadCount()`
-* `cowtest`: untuk menguji fork dengan Copy-on-Write
-* `shmtest`: untuk menguji `shmget()` dan `shmrelease()`
-* `chmodtest`: untuk memastikan file `read-only` tidak bisa ditulis
-* `audit`: untuk melihat isi log system call (jika dijalankan oleh PID 1)
 
 ---
 
@@ -47,30 +45,27 @@ Tuliskan program uji apa saja yang Anda gunakan, misalnya:
 
 Lampirkan hasil uji berupa screenshot atau output terminal. Contoh:
 
-### 📍 Contoh Output `cowtest`:
+### 📍 Contoh Output `ptest`:
 
 ```
-Child sees: Y
-Parent sees: X
-```
-
-### 📍 Contoh Output `shmtest`:
-
-```
-Child reads: A
-Parent reads: B
-```
-
-### 📍 Contoh Output `chmodtest`:
+$ ptest
+PID	MEM	NAME
+1	12288 init
+2	16384	sh
+3	12288	ptest
 
 ```
-Write blocked as expected
+### 📍 Contoh Output `rtest`:
+
+```
+$ rtest
+Read Count Sebelum: 12
+hello
+Read Count Setelah: 13
 ```
 
 Jika ada screenshot:
 
-```
-![hasil cowtest](./screenshots/cowtest_output.png)
 ```
 
 ---
