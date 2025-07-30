@@ -84,7 +84,8 @@ Write blocked as expected
 ```
 Hasil Screenshoot:
 
-:
+
+<img width="966" height="747" alt="chmodtest" src="https://github.com/user-attachments/assets/c7278040-6a67-4c2d-8266-27dc7a4e0977" />
 
 ### 📍 Contoh Output `randomtest`:
 
@@ -93,7 +94,8 @@ Hasil Screenshoot:
 ```
 Hasil Screenshoot:
 
-:
+<img width="1452" height="554" alt="randomtest" src="https://github.com/user-attachments/assets/2264b50b-5457-45c2-90ec-0ee71d3bf60f" />
+
 
 
 ## ⚠️ Kendala yang Dihadapi
