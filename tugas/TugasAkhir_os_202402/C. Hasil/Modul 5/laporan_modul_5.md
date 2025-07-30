@@ -64,6 +64,7 @@ Access denied or error.
 ```
 Hasil Screenshoot:
 
+<img width="617" height="186" alt="error" src="https://github.com/user-attachments/assets/8e89988f-3543-43b0-97dd-753e98113908" />
 
 
 ### 📍 Output jika dijalankan sebagai PID = 1 (init):
@@ -75,10 +76,9 @@ Hasil Screenshoot:
 [2] PID=1 SYSCALL=17 TICK=22
 ...  
 
-```
 Hasil Screenshoot:
 
-
+<img width="856" height="269" alt="benar" src="https://github.com/user-attachments/assets/54f976eb-f8b8-4e21-b674-179abd278daa" />
 
 ## ⚠️ Kendala yang Dihadapi
 
