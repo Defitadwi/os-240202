@@ -64,7 +64,9 @@ Access denied or error.
 ```
 Hasil Screenshoot:
 
-<img width="617" height="186" alt="error" src="https://github.com/user-attachments/assets/8e89988f-3543-43b0-97dd-753e98113908" />
+<img width="856" height="269" alt="benar" src="https://github.com/user-attachments/assets/af6f13e0-fab7-465d-94ec-82bf1ddca560" />
+
+
 
 
 ### 📍 Output jika dijalankan sebagai PID = 1 (init):
@@ -79,7 +81,9 @@ Hasil Screenshoot:
 Hasil Screenshoot:
 
 
-<img width="856" height="269" alt="benar" src="https://github.com/user-attachments/assets/29431593-4238-4867-9983-a955e6ebcfc5" />
+<img width="856" height="269" alt="benar" src="https://github.com/user-attachments/assets/d75e6295-40eb-4823-8622-15e214708aa6" />
+
+
 
 
 
