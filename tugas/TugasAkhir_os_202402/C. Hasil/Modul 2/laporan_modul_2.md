@@ -1,11 +1,15 @@
 # 📝 Laporan Tugas Akhir
 
 **Mata Kuliah**: Sistem Operasi
+
 **Semester**: Genap / Tahun Ajaran 2024–2025
-**Nama**: `<Nama Lengkap>`
-**NIM**: `<Nomor Induk Mahasiswa>`
+
+**Nama**: `Defita Dwi Wulandary`
+
+**NIM**: `240202856`
+
 **Modul yang Dikerjakan**:
-`(Contoh: Modul 1 – System Call dan Instrumentasi Kernel)`
+`Modul 2 – Penjadwalan CPU Lanjutan`
 
 ---
 
@@ -34,37 +38,21 @@ Tuliskan secara ringkas namun jelas apa yang Anda lakukan:
 
 Tuliskan program uji apa saja yang Anda gunakan, misalnya:
 
-* `ptest`: untuk menguji `getpinfo()`
-* `rtest`: untuk menguji `getReadCount()`
-* `cowtest`: untuk menguji fork dengan Copy-on-Write
-* `shmtest`: untuk menguji `shmget()` dan `shmrelease()`
-* `chmodtest`: untuk memastikan file `read-only` tidak bisa ditulis
-* `audit`: untuk melihat isi log system call (jika dijalankan oleh PID 1)
-
+* `prio_test`: menguji set_priority() dan membuktikan bahwa proses dengan prioritas lebih tinggi dieksekusi terlebih dahulu
 ---
 
 ## 📷 Hasil Uji
 
-Lampirkan hasil uji berupa screenshot atau output terminal. Contoh:
-
-### 📍 Contoh Output `cowtest`:
+Hasil uji ptest:
 
 ```
-Child sees: Y
-Parent sees: X
-```
 
-### 📍 Contoh Output `shmtest`:
+$ ptest
+Child 1 selesai
+Child 2 selesai
+Parent selesai
+$
 
-```
-Child reads: A
-Parent reads: B
-```
-
-### 📍 Contoh Output `chmodtest`:
-
-```
-Write blocked as expected
 ```
 
 Jika ada screenshot:
