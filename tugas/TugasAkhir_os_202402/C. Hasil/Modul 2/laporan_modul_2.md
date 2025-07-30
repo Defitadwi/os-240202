@@ -4,12 +4,14 @@
 
 **Semester**: Genap / Tahun Ajaran 2024–2025
 
-**Nama**: `Defita Dwi Wulandary`
+**Nama**: Defita Dwi Wulandary
 
-**NIM**: `240202856`
+**NIM**: 240202856
 
 **Modul yang Dikerjakan**:
-`Modul 2 – Penjadwalan CPU Lanjutan`
+Modul 2 – Penjadwalan CPU Lanjutan
+
+
 
 ---
 
