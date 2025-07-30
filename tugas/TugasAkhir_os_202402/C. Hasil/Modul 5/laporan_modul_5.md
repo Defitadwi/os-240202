@@ -66,9 +66,6 @@ Hasil Screenshoot:
 
 <img width="856" height="269" alt="benar" src="https://github.com/user-attachments/assets/af6f13e0-fab7-465d-94ec-82bf1ddca560" />
 
-
-
-
 ### 📍 Output jika dijalankan sebagai PID = 1 (init):
 
 ```
@@ -78,14 +75,10 @@ Hasil Screenshoot:
 [2] PID=1 SYSCALL=17 TICK=22
 ...  
 
+```
 Hasil Screenshoot:
 
-
-<img width="856" height="269" alt="benar" src="https://github.com/user-attachments/assets/d75e6295-40eb-4823-8622-15e214708aa6" />
-
-
-
-
+<img width="617" height="186" alt="error" src="https://github.com/user-attachments/assets/345df8ca-ba0b-4efb-aa21-8276a3654564" />
 
 ## ⚠️ Kendala yang Dihadapi
 
