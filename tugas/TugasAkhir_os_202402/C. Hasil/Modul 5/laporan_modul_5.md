@@ -78,7 +78,10 @@ Hasil Screenshoot:
 
 Hasil Screenshoot:
 
-<img width="856" height="269" alt="benar" src="https://github.com/user-attachments/assets/fd5f67cc-d13e-468e-8ad2-5c87c4e6ab93" />
+
+<img width="856" height="269" alt="benar" src="https://github.com/user-attachments/assets/29431593-4238-4867-9983-a955e6ebcfc5" />
+
+
 
 ## ⚠️ Kendala yang Dihadapi
 
