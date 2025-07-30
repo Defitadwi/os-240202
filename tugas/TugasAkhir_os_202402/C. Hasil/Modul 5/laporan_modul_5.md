@@ -1,87 +1,94 @@
 # 📝 Laporan Tugas Akhir
 
 **Mata Kuliah**: Sistem Operasi
+
 **Semester**: Genap / Tahun Ajaran 2024–2025
-**Nama**: `<Nama Lengkap>`
-**NIM**: `<Nomor Induk Mahasiswa>`
-**Modul yang Dikerjakan**:
-`(Contoh: Modul 1 – System Call dan Instrumentasi Kernel)`
+
+**Nama**: `Defita Dwi Wulandary`
+
+**NIM**: `240202856`
+
+**Modul yang Dikerjakan**: `Modul 5 – Audit dan Keamanan Sistem`
 
 ---
 
 ## 📌 Deskripsi Singkat Tugas
 
-Tuliskan deskripsi singkat dari modul yang Anda kerjakan. Misalnya:
+Melakukan perluasan terhadap kernel xv6 untuk merekam setiap system call yang dijalankan oleh proses, serta menyediakan system call `get_audit_log()` yang memungkinkan proses dengan PID 1 untuk membaca log system call tersebut.
 
-* **Modul 1 – System Call dan Instrumentasi Kernel**:
-  Menambahkan dua system call baru, yaitu `getpinfo()` untuk melihat proses yang aktif dan `getReadCount()` untuk menghitung jumlah pemanggilan `read()` sejak boot.
 ---
 
 ## 🛠️ Rincian Implementasi
 
-Tuliskan secara ringkas namun jelas apa yang Anda lakukan:
-
 ### Contoh untuk Modul 1:
 
-* Menambahkan dua system call baru di file `sysproc.c` dan `syscall.c`
-* Mengedit `user.h`, `usys.S`, dan `syscall.h` untuk mendaftarkan syscall
-* Menambahkan struktur `struct pinfo` di `proc.h`
-* Menambahkan counter `readcount` di kernel
-* Membuat dua program uji: `ptest.c` dan `rtest.c`
+* Menambahkan struktur `audit_entry` dan array `audit_log[]` di `syscall.c` untuk menyimpan log.
+
+  * Menambahkan kode logging di dalam fungsi `syscall()` agar setiap system call valid dicatat `(PID, nomor syscall, dan tick)`.
+
+  * Menambahkan system call baru `get_audit_log()` untuk membaca isi log
+
+ ## System Call get_audit_log()
+  
+  * Menambahkan deklarasi syscall di:
+
+    * `user.h`: termasuk juga definisi ulang `struct audit_entry`
+
+    * `usys.S`: `SYSCALL(get_audit_log)`
+
+    * `syscall.c`: pendaftaran di array `syscalls[]`
+
+  * Mengimplementasikan fungsi `sys_get_audit_log()` di `sysproc.c`:
+
+  ## Integrasi Build & Testing
+
+* Menambahkan file uji `audit.c` untuk membaca dan menampilkan log
+
+* Menambahkan `_audit\` di bagian `UPROGS` Makefile
+
 ---
 
 ## ✅ Uji Fungsionalitas
 
-Tuliskan program uji apa saja yang Anda gunakan, misalnya:
-
-* `ptest`: untuk menguji `getpinfo()`
-* `rtest`: untuk menguji `getReadCount()`
-* `cowtest`: untuk menguji fork dengan Copy-on-Write
-* `shmtest`: untuk menguji `shmget()` dan `shmrelease()`
-* `chmodtest`: untuk memastikan file `read-only` tidak bisa ditulis
-* `audit`: untuk melihat isi log system call (jika dijalankan oleh PID 1)
+`audit`	Menampilkan semua system call yang tercatat di log
 
 ---
 
 ## 📷 Hasil Uji
 
-Lampirkan hasil uji berupa screenshot atau output terminal. Contoh:
-
-### 📍 Contoh Output `cowtest`:
+### 📍 Output jika dijalankan sebagai PID ≠ 1:
 
 ```
-Child sees: Y
-Parent sees: X
-```
-
-### 📍 Contoh Output `shmtest`:
+Access denied or error.
 
 ```
-Child reads: A
-Parent reads: B
-```
+Hasil Screenshoot:
 
-### 📍 Contoh Output `chmodtest`:
 
-```
-Write blocked as expected
-```
 
-Jika ada screenshot:
+### 📍 Output jika dijalankan sebagai PID = 1 (init):
 
 ```
-![hasil cowtest](./screenshots/cowtest_output.png)
-```
+=== Audit Log ===  
+[0] PID=1 SYSCALL=7 TICK=7 
+[1] PID=1 SYSCALL=15 TICK=19  
+[2] PID=1 SYSCALL=17 TICK=22
+...  
 
----
+```
+Hasil Screenshoot:
+
+
 
 ## ⚠️ Kendala yang Dihadapi
 
 Tuliskan kendala (jika ada), misalnya:
 
-* Salah implementasi `page fault` menyebabkan panic
-* Salah memetakan alamat shared memory ke USERTOP
-* Proses biasa bisa akses audit log (belum ada validasi PID)
+* Ukuran log tetap terbatas (maks. 128 entri), perlu manajemen rotasi untuk log besar
+
+* Struktur `audit_entry` perlu disamakan di kernel dan user (duplikasi di user.h)
+
+* `audit.c` harus dijalankan sebagai proses pertama (init), sehingga perlu mengubah `init.c`
 
 ---
 
