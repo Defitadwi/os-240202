@@ -9,7 +9,9 @@
 **NIM**: 240202856
 
 **Modul yang Dikerjakan**:
-Modul 4 – Subsistem Kernel Alternatif 
+Modul 4 – Subsistem Kernel Alternatif (chmod() dan /dev/random))
+
+
 
 ---
 
